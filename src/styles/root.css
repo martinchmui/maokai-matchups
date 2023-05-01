@@ -1,0 +1,48 @@
+#root-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #009aff;
+}
+
+.main-content {
+  margin-bottom: 1rem;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.root-light {
+  background-color: #f5f5f5;
+}
+
+.root-dark {
+  background-color: #404040;
+  color: white;
+}
+
+.light {
+  background-color: white;
+}
+
+.dark {
+  background-color: #181818;
+}
+
+.container-padding {
+  padding: 0.8rem;
+}

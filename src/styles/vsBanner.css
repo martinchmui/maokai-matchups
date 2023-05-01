@@ -1,0 +1,80 @@
+.banner {
+  max-width: 1152px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.banner-title {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 10%;
+}
+
+.summoners {
+  border-radius: 10%;
+  margin-left: 0.5rem;
+}
+
+.summoners-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img-container {
+  display: flex;
+}
+
+.difficulty-bar {
+  display: inline-block;
+  width: 29.333%;
+  height: 100%;
+  padding-right: 4%;
+  opacity: 1;
+  background-clip: content-box;
+  transform: skewX(-40deg);
+}
+
+.difficulty-container {
+  width: 242px;
+  text-align: center;
+}
+
+.difficulty-container h3,
+.bar-size {
+  display: inline-block;
+}
+
+.bar-size {
+  height: 10px;
+  width: 50px;
+  padding-left: 4%;
+}
+
+.not-active {
+  opacity: 0.2;
+}
+
+.easy {
+  background-color: green;
+}
+
+.moderate {
+  background-color: orange;
+}
+
+.hard {
+  background-color: red;
+}

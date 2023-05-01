@@ -1,0 +1,60 @@
+.minor-primary {
+  padding: 0.5rem 0.6rem;
+}
+
+.rune-table-container {
+  display: flex;
+  justify-content: center;
+  min-width: 408px;
+}
+
+.row {
+  text-align: center;
+}
+
+.runes {
+  filter: opacity(0.5) grayscale(1);
+}
+
+.runes-active {
+  filter: none;
+}
+
+.minor-secondary {
+  padding: 0.1rem 0.5rem;
+}
+
+.shards {
+  background-color: black;
+  border-radius: 50%;
+}
+
+.shards-table {
+  margin: auto;
+  border-spacing: 1rem 0;
+}
+
+.tooltip {
+  --rt-opacity: 1;
+  max-width: 300px;
+  z-index: 2;
+}
+
+.tooltip-desc {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.tooltip-desc li {
+  padding: 0px;
+}
+
+:root {
+  --scale: calc(0.64 + (1 - 0.64) * (100vw - 320px) / (468 - 320));
+}
+
+@media screen and (max-width: 769px) {
+  .tooltip {
+    max-width: 200px;
+  }
+}

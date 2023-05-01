@@ -1,0 +1,8 @@
+.item-path-container {
+  display: flex;
+  align-items: center;
+}
+
+.item-path-container img {
+  border-radius: 15%;
+}

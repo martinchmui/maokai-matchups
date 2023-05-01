@@ -1,0 +1,30 @@
+.error-page-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1152px;
+  align-items: center;
+  margin: auto;
+}
+
+.error-message {
+  text-align: center;
+}
+
+.alt-container {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.alt-container p {
+  width: 40%;
+}
+
+@media screen and (max-width: 587px) {
+  .alt-container {
+    flex-direction: column;
+  }
+  .alt-container p {
+    width: 100%;
+  }
+}

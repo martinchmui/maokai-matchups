@@ -1,0 +1,58 @@
+.bans-container {
+  max-width: 1152px;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.img-name {
+  text-align: center;
+}
+
+.img-name p {
+  margin: 0.5rem;
+}
+
+.champions-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.champion {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+}
+
+.ban-image {
+  border-radius: 10%;
+}
+
+.ban-name {
+  font-weight: bold;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 599px) {
+  .champions-container {
+    flex-direction: column;
+  }
+
+  .champion {
+    width: 100%;
+    flex-direction: row;
+    align-items: normal;
+  }
+
+  .img-name {
+    padding: 0.8rem;
+  }
+}

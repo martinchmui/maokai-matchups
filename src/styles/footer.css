@@ -1,0 +1,18 @@
+footer {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8rem;
+}
+
+footer div {
+  text-align: center;
+}
+
+footer div a {
+  text-decoration: none;
+}
+
+footer div p {
+  text-align: initial;
+}
