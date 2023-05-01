@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchRiotVersion } from '../redux/slices/searchSlice';
 import '../styles/itemPath.css';
-import { Tooltip } from 'react-tooltip';
 
 interface ItemPathProps {
   summoners: string[];
@@ -78,28 +77,7 @@ const Summoners: React.FC<ItemPathProps> = ({ summoners }) => {
     fetchSummonersData();
   }, []);
 
-  return (
-    <div className="img-container">
-      {renderItems()}
-      <Tooltip
-        id="tooltip"
-        place="top"
-        float={true}
-        className="tooltip"
-        render={({ content, activeAnchor }) => (
-          <div>
-            {content ? <h4>{content}</h4> : null}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: activeAnchor?.getAttribute('data-tooltip-desc') ?? '',
-              }}
-              className="tooltipDesc"
-            />
-          </div>
-        )}
-      />
-    </div>
-  );
+  return <div className="img-container">{renderItems()}</div>;
 };
 
 export default Summoners;

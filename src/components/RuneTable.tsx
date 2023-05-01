@@ -3,7 +3,6 @@ import { fetchRiotVersion } from '../redux/slices/searchSlice';
 import { useAppSelector } from '../redux/hooks';
 import '../styles/runeTable.css';
 import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
 import { json } from 'react-router-dom';
 import { calculateScaleFactor } from './ChampionDetails';
 
@@ -273,23 +272,6 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
     >
       {renderPrimaryRunes()}
       {renderSecondaryRunes()}
-      <Tooltip
-        id="tooltip"
-        place="top"
-        float={true}
-        className="tooltip"
-        render={({ content, activeAnchor }) => (
-          <div>
-            {content ? <h4>{content}</h4> : null}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: activeAnchor?.getAttribute('data-tooltip-desc') ?? '',
-              }}
-              className="tooltip-desc"
-            />
-          </div>
-        )}
-      />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchRiotVersion } from '../redux/slices/searchSlice';
 import '../styles/itemPath.css';
-import { Tooltip } from 'react-tooltip';
 import { calculateScaleFactor } from './ChampionDetails';
 
 interface ItemPathProps {
@@ -113,28 +112,7 @@ const ItemPath: React.FC<ItemPathProps> = ({ items }) => {
     };
   }, []);
 
-  return (
-    <>
-      {renderItems()}
-      <Tooltip
-        id="tooltip"
-        place="top"
-        float={true}
-        className="tooltip"
-        render={({ content, activeAnchor }) => (
-          <div>
-            {content ? <h4>{content}</h4> : null}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: activeAnchor?.getAttribute('data-tooltip-desc') ?? '',
-              }}
-              className="tooltip-desc"
-            />
-          </div>
-        )}
-      />
-    </>
-  );
+  return <>{renderItems()}</>;
 };
 
 export default ItemPath;

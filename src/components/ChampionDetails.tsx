@@ -16,6 +16,8 @@ import ItemPath from './ItemPath';
 import Footer from './Footer';
 import ErrorPage from './ErrorPage';
 import LiveNotification from './LiveNotification';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 export const calculateScaleFactor = (width: number, minRange: number) => {
   const minWidth = 320; // minimum width in pixels
@@ -167,6 +169,23 @@ const ChampionDetails = () => {
           ) : null}
         </>
       )}
+      <Tooltip
+        id="tooltip"
+        place="top"
+        float={true}
+        className="tooltip"
+        render={({ content, activeAnchor }) => (
+          <div>
+            {content ? <h4>{content}</h4> : null}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: activeAnchor?.getAttribute('data-tooltip-desc') ?? '',
+              }}
+              className="tooltip-desc"
+            />
+          </div>
+        )}
+      />
     </div>
   );
 };
