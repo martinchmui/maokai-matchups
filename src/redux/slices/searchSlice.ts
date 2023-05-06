@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ChampionState, fetchSheetData } from './dataSlice';
+import {
+  ChampionState,
+  fetchSheetData,
+  removeSpecialCharacters,
+} from './dataSlice';
 import { json } from 'react-router-dom';
 
 interface InputState {
@@ -55,7 +59,11 @@ const findChampionIndex = (
   championsData: Record<string, any>
 ) => {
   for (const championIndex in championsData) {
-    if (championsData[championIndex].name === name) {
+    if (
+      removeSpecialCharacters(
+        championsData[championIndex].name
+      ).toLowerCase() === removeSpecialCharacters(name).toLowerCase()
+    ) {
       return championIndex;
     }
   }
