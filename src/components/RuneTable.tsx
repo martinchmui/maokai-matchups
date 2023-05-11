@@ -96,7 +96,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                 data-tooltip-content={rune.name}
                 data-tooltip-desc={rune.longDesc}
                 key={key}
-                src={`https://ddragon.canisback.com/img/${rune.icon}`}
+                src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.icon.toLowerCase()}`}
                 alt={rune.name}
                 height={50 * scalingFactor}
                 width={50 * scalingFactor}
@@ -119,7 +119,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                           data-tooltip-id="tooltip"
                           data-tooltip-content={rune.name}
                           data-tooltip-desc={rune.longDesc}
-                          src={`https://ddragon.canisback.com/img/${rune.icon}`}
+                          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.icon.toLowerCase()}`}
                           alt={rune.name}
                           key={key}
                           height={30 * scalingFactor}
@@ -159,7 +159,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                           data-tooltip-id="tooltip"
                           data-tooltip-content={rune.name}
                           data-tooltip-desc={rune.longDesc}
-                          src={`https://ddragon.canisback.com/img/${rune.icon}`}
+                          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.icon.toLowerCase()}`}
                           alt={rune.name}
                           key={key}
                           height={30 * scalingFactor}
