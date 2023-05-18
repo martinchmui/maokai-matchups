@@ -42,6 +42,8 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
   const [secondaryRunes, setSecondary] = useState<RunePathData | null>(null);
   const [shards, setShards] = useState<ShardsDetail[] | null>(null);
   const [scaleFactor, setScaleFactor] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const mode = useAppSelector((state) => state.darkMode.mode);
   const championData = useAppSelector((state) => state.data.championData);
   const shardsUrl =
     'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/';
@@ -240,6 +242,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
         setPrimary(primaryRunes);
         setSecondary(secondaryRunes);
         setShards(shards);
+        setLoading(false);
       } catch (error) {
         throw Error(error);
       }
@@ -270,8 +273,14 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
       className="rune-table-container"
       style={{ transform: `scale(${scaleFactor})`, transformOrigin: 'left' }}
     >
-      {renderPrimaryRunes()}
-      {renderSecondaryRunes()}
+      {!loading ? (
+        <>
+          {renderPrimaryRunes()}
+          {renderSecondaryRunes()}
+        </>
+      ) : (
+        <div className={`champion-details-spinner spinner-${mode}`}></div>
+      )}
     </div>
   );
 };
