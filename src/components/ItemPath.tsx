@@ -21,10 +21,12 @@ interface ItemData {
 const ItemPath: React.FC<ItemPathProps> = ({ items }) => {
   const [itemsData, setItems] = useState<Record<string, ItemData> | null>(null);
   const [scaleFactor, setScaleFactor] = useState<number | null>(null);
+  const [latestVersion, setLatestVersion] = useState('');
 
   const getItemsData = async () => {
     try {
       const latestVersion = await fetchRiotVersion();
+      setLatestVersion(latestVersion);
       const response = await fetch(
         `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/item.json`
       );
@@ -60,7 +62,7 @@ const ItemPath: React.FC<ItemPathProps> = ({ items }) => {
             itemData && (
               <React.Fragment key={key}>
                 <img
-                  src={`https://ddragon.leagueoflegends.com/cdn/13.8.1/img/item/${itemData.image.full}`}
+                  src={`https://ddragon.leagueoflegends.com/cdn/${latestVersion}/img/item/${itemData.image.full}`}
                   alt={itemData.name}
                   data-tooltip-id="tooltip"
                   data-tooltip-content={itemData.name}
