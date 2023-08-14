@@ -19,10 +19,12 @@ const Summoners: React.FC<ItemPathProps> = ({ summoners }) => {
     string,
     SummonerData
   > | null>(null);
+  const [latestVersion, setLatestVersion] = useState('');
 
   const getSummonersData = async () => {
     try {
       const latestVersion = await fetchRiotVersion();
+      setLatestVersion(latestVersion);
       const response = await fetch(
         `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/summoner.json`
       );
@@ -48,7 +50,7 @@ const Summoners: React.FC<ItemPathProps> = ({ summoners }) => {
           return (
             summonerData && (
               <img
-                src={`https://ddragon.leagueoflegends.com/cdn/13.8.1/img/spell/${summonerData.image.full}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/${latestVersion}/img/spell/${summonerData.image.full}`}
                 key={key}
                 alt={summonerData.name}
                 data-tooltip-id="tooltip"
