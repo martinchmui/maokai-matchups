@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { fetchRiotVersion } from '../redux/slices/searchSlice';
-import { useAppSelector } from '../redux/hooks';
-import '../styles/runeTable.css';
-import 'react-tooltip/dist/react-tooltip.css';
-import { json } from 'react-router-dom';
-import { calculateScaleFactor } from './ChampionDetails';
+import React, { useEffect, useState } from "react";
+import { fetchRiotVersion } from "../redux/slices/searchSlice";
+import { useAppSelector } from "../redux/hooks";
+import "../styles/runeTable.css";
+import "react-tooltip/dist/react-tooltip.css";
+import { json } from "react-router-dom";
+import { calculateScaleFactor } from "./ChampionDetails";
 
 interface RuneTableProps {
   scalingFactor: number;
@@ -46,7 +46,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
   const mode = useAppSelector((state) => state.darkMode.mode);
   const championData = useAppSelector((state) => state.data.championData);
   const shardsUrl =
-    'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/';
+    "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
 
   const getRunePathByRuneName = async (runeName: string) => {
     try {
@@ -68,17 +68,17 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
   const getRuneShards = async () => {
     try {
       const response = await fetch(
-        'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json'
+        "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json"
       );
       const data = await response.json();
       const filteredData = data.filter(
         (rune: { id: { toString: () => string } }) =>
-          rune.id.toString().startsWith('500')
+          rune.id.toString().startsWith("50")
       );
       const modifiedData = filteredData.map((item: { iconPath: string }) => {
         return {
           ...item,
-          iconPath: item.iconPath.toLowerCase().split('/').pop(),
+          iconPath: item.iconPath.toLowerCase().split("/").pop(),
         };
       });
       return modifiedData;
@@ -104,8 +104,8 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                 width={50 * scalingFactor}
                 className={`runes${
                   rune.name === championData.primaryRunes.keystone
-                    ? '-active'
-                    : ''
+                    ? "-active"
+                    : ""
                 }`}
               />
             );
@@ -128,8 +128,8 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                           width={30 * scalingFactor}
                           className={`minor-primary runes${
                             championData.primaryRunes.minors.includes(rune.name)
-                              ? '-active'
-                              : ''
+                              ? "-active"
+                              : ""
                           }`}
                         />
                       );
@@ -168,8 +168,8 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                           width={30 * scalingFactor}
                           className={`minor-secondary runes${
                             championData.secondaryRunes.includes(rune.name)
-                              ? '-active'
-                              : ''
+                              ? "-active"
+                              : ""
                           }`}
                         />
                       );
@@ -189,9 +189,9 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
 
   const renderShards = () => {
     const shardRows = [
-      [2, 5, 4],
-      [2, 1, 0],
-      [3, 1, 0],
+      [5, 8, 7],
+      [5, 9, 6],
+      [3, 4, 6],
     ];
     if (shards) {
       return (
@@ -214,9 +214,11 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                         ) ||
                         championData?.shards[index]?.includes(
                           shards[shardIndex].name
-                        )
-                          ? 'active'
-                          : ''
+                        ) ||
+                        (shards[shardIndex]?.name === "Health Scaling" &&
+                          championData?.shards[index] === "Scaling HP")
+                          ? "active"
+                          : ""
                       }`}
                     />
                   </td>
@@ -260,18 +262,18 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
       setScaleFactor(scaleFactor);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener on unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div
       className="rune-table-container"
-      style={{ transform: `scale(${scaleFactor})`, transformOrigin: 'left' }}
+      style={{ transform: `scale(${scaleFactor})`, transformOrigin: "left" }}
     >
       {!loading ? (
         <>
