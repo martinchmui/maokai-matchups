@@ -43,7 +43,6 @@ const ChampionDetails = () => {
   const imgUrl = champion?.imgUrl;
   const [loading, setLoading] = useState(true);
   const [dataFetched, setDataFetched] = useState(false);
-  const [scaleFactor, setScaleFactor] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,24 +71,6 @@ const ChampionDetails = () => {
       document.title = "Page Not Found";
     }
   }, [dataFetched, championData.name, champion, loading]);
-
-  useEffect(() => {
-    // Set the initial scale factor
-    setScaleFactor(calculateScaleFactor(439, 0.61));
-
-    // Recalculate the scale factor on window resize
-    const handleResize = () => {
-      const scaleFactor = calculateScaleFactor(439, 0.61);
-      setScaleFactor(scaleFactor);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div id="root-container" className={`root-${mode}`}>
