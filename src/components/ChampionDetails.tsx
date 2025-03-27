@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import {
   checkChannelLive,
   fetchChampionData,
   removeSpecialCharacters,
   reset,
-} from '../redux/slices/dataSlice';
-import RuneTable from './RuneTable';
-import Header from './Header';
-import VsBanner from './VsBanner';
-import '../styles/championDetails.css';
-import { fetchChampionTable } from '../redux/slices/searchSlice';
-import ItemPath from './ItemPath';
-import Footer from './Footer';
-import ErrorPage from './ErrorPage';
-import LiveNotification from './LiveNotification';
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
+} from "../redux/slices/dataSlice";
+import RuneTable from "./RuneTable";
+import Header from "./Header";
+import VsBanner from "./VsBanner";
+import "../styles/championDetails.css";
+import { fetchChampionTable } from "../redux/slices/searchSlice";
+import ItemPath from "./ItemPath";
+import Footer from "./Footer";
+import ErrorPage from "./ErrorPage";
+import LiveNotification from "./LiveNotification";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 export const calculateScaleFactor = (width: number, minRange: number) => {
   const minWidth = 320; // minimum width in pixels
@@ -69,7 +69,7 @@ const ChampionDetails = () => {
     if (dataFetched && championData.name) {
       document.title = `Maokai vs ${championData.name}`;
     } else if (!champion && !loading) {
-      document.title = 'Page Not Found';
+      document.title = "Page Not Found";
     }
   }, [dataFetched, championData.name, champion, loading]);
 
@@ -83,11 +83,11 @@ const ChampionDetails = () => {
       setScaleFactor(scaleFactor);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener on unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -97,14 +97,14 @@ const ChampionDetails = () => {
         <ErrorPage missingChamp={true} />
       ) : (
         <>
-          {' '}
+          {" "}
           <div className="main-content">
             <Header />
-            {!loading && championName !== 'illaoi' ? (
+            {!loading && championName !== "illaoi" ? (
               <>
                 <VsBanner
                   name={championData.name}
-                  imgUrl={imgUrl ?? ''}
+                  imgUrl={imgUrl ?? ""}
                   difficulty={championData.difficulty}
                   summoners={championData.summoners}
                 />
@@ -123,37 +123,17 @@ const ChampionDetails = () => {
                   </div>
                 </div>
               </>
-            ) : !loading && championName === 'illaoi' ? (
+            ) : !loading && championName === "illaoi" ? (
               <>
                 <VsBanner
                   name={championData.name}
-                  imgUrl={imgUrl ?? ''}
+                  imgUrl={imgUrl ?? ""}
                   difficulty={championData.difficulty}
                   summoners={[]}
                 />
                 <div className="container-padding">
                   <div className={`matchup-details ${mode}`}>
-                    <figure
-                      className="stop-sign "
-                      style={{
-                        transform: `scale(${scaleFactor})`,
-                        transformOrigin: 'left',
-                      }}
-                    >
-                      <div>
-                        <div>
-                          <div>
-                            <div>
-                              <div>
-                                <div>
-                                  <span>DODGE</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </figure>
+                    <img src="stop-sign.png" alt="stop-sign" />
                   </div>
                 </div>
               </>
@@ -179,7 +159,7 @@ const ChampionDetails = () => {
             {content ? <h4>{content}</h4> : null}
             <div
               dangerouslySetInnerHTML={{
-                __html: activeAnchor?.getAttribute('data-tooltip-desc') ?? '',
+                __html: activeAnchor?.getAttribute("data-tooltip-desc") ?? "",
               }}
               className="tooltip-desc"
             />
