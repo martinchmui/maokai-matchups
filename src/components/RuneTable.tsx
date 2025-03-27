@@ -161,7 +161,7 @@ const RuneTable: React.FC<RuneTableProps> = ({ scalingFactor }) => {
                           data-tooltip-id="tooltip"
                           data-tooltip-content={rune.name}
                           data-tooltip-desc={rune.longDesc}
-                          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.icon.toLowerCase()}`}
+                          src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/${rune.icon.toLowerCase()}?t=${Date.now()}`}
                           alt={rune.name}
                           key={key}
                           height={30 * scalingFactor}
